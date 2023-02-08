@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- BEGIN : Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>PDTS - Planning Division</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Task List</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/app-assets/img/ico/favicon.ico}">
+    <link rel="shortcut icon" type="image/png" th:href="@{/app-assets/img/ico/favicon-32.png}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900|Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    <!-- font icons-->
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/fonts/feather/style.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/fonts/simple-line-icons/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/fonts/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/vendors/css/perfect-scrollbar.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/vendors/css/prism.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/vendors/css/switchery.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/vendors/css/pickadate/pickadate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/vendors/css/datatables/dataTables.bootstrap4.min.css}">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN APEX CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/css/bootstrap-extended.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/css/colors.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/css/components.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/app-assets/css/themes/layout-dark.css}">
+    <link rel="stylesheet" th:href="@{/app-assets/css/plugins/switchery.css}">
+    <!-- END APEX CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <!-- END Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
+    <!-- END: Custom CSS-->
+</head>
+<!-- END : Head-->
+
+<!-- BEGIN : Body-->
+
+<body class="vertical-layout vertical-menu 2-columns  navbar-sticky" data-menu="vertical-menu" data-col="2-columns">
+
+<!-- Navbar (Header) Starts-->
+<div th:replace="~{fragments/topnav.html :: topnavbar}"></div>
+<!-- Navbar (Header) Ends-->
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<div class="wrapper">
+
+
+    <!-- main menu-->
+    <!--.main-menu(class="#{menuColor} #{menuOpenType}", class=(menuShadow == true ? 'menu-shadow' : ''))-->
+    <div class="app-sidebar menu-fixed" data-background-color="man-of-steel" data-image="app-assets/img/sidebar-bg/01.jpg" data-scroll-to-active="true">
+        <!-- main menu header-->
+        <!-- Sidebar Header For Starter Kit starts-->
+        <div class="sidebar-header">
+            <div th:replace="~{fragments/sidebarheader.html :: logo-header}"></div>
+        </div>
+        <!-- Sidebar Header Ends-->
+        <!-- / main menu header-->
+        <!-- main menu content-->
+        <div class="sidebar-content main-menu-content">
+            <div th:replace="~{fragments/leftnav.html :: leftsidebar}"></div>
+        </div>
+        <!-- main menu content-->
+        <div class="sidebar-background"></div>
+        <!-- main menu footer-->
+        <!-- include includes/menu-footer-->
+        <!-- main menu footer-->
+    </div>
+    <!-- / main menu-->
+
+    <div class="main-panel">
+        <!-- BEGIN : Main Content-->
+        <div class="main-content">
+            <div class="content-overlay"></div>
+            <div layout:fragment="main-content">
+                <!---- COntent will load Here --->
+            </div>
+        </div>
+        <!-- END : End Main Content-->
+
+        <!-- BEGIN : Footer-->
+        <footer class="footer undefined undefined">
+            <div th:replace="~{fragments/footer.html :: footer-area}"></div>
+        </footer>
+        <!-- End : Footer-->
+        <!-- Scroll to top button -->
+        <button class="btn btn-primary scroll-top" type="button"><i class="ft-arrow-up"></i></button>
+
+    </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+<!-- BEGIN VENDOR JS-->
+<script th:src="@{/app-assets/vendors/js/vendors.min.js}"></script>
+<script th:src="@{/app-assets/vendors/js/switchery.min.js}"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<script th:src="@{/app-assets/vendors/js/pickadate/picker.js}"></script>
+<script th:src="@{/app-assets/vendors/js/pickadate/picker.date.js}"></script>
+<script th:src="@{/app-assets/vendors/js/pickadate/picker.time.js}"></script>
+<script th:src="@{/app-assets/vendors/js/pickadate/legacy.js}"></script>
+<script th:src="@{/app-assets/vendors/js/datatable/jquery.dataTables.min.js}"></script>
+<script th:src="@{/app-assets/vendors/js/datatable/dataTables.bootstrap4.min.js}"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN APEX JS-->
+<script th:src="@{/app-assets/js/core/app-menu.js}"></script>
+<script th:src="@{/app-assets/js/core/app.js}"></script>
+<script th:src="@{/app-assets/js/notification-sidebar.js}"></script>
+<script th:src="@{/app-assets/js/customizer.js}"></script>
+<script th:src="@{/app-assets/js/scroll-top.js}"></script>
+<!-- END APEX JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script th:src="@{/app-assets/js/datetime-picker.js}"></script>
+<script th:src="@{/app-assets/js/data-tables/dt-basic-initialization.js}"></script>
+<!-- END PAGE LEVEL JS-->
+<!-- BEGIN: Custom CSS-->
+<script th:src="@{/assets/js/scripts.js}"></script>
+<!-- END: Custom CSS-->
+<script>
+    $("#list").DataTable();
+</script>
+</body>
+<!-- END : Body-->
+
+</html>

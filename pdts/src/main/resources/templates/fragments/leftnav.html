@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="nav-container"  th:fragment="leftsidebar">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item"><a th:href="@{/}"><i class="ft-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+            </li>
+
+
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Employee</span></a>
+                <ul class="menu-content">
+                    <li th:class="${employeeAddClass}"><a th:href="@{/employee/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
+                    </li>
+                    <li th:class="${employeeListClass}"><a th:href="@{/employee/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">List</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Training</span></a>
+                <ul class="menu-content">
+                    <li th:class="${trainingAddClass}"><a  th:href="@{/training/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
+                    </li>
+                    <li th:class="${trainingListClass}"><a  th:href="@{/training/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">List</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Reporting</span></a>
+                <ul class="menu-content">
+                    <li ><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
+                    </li>
+                    <li><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">List</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Settings</span></a>
+                <ul class="menu-content">
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Project</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${projectAddClass}"><a  th:href="@{/project/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${projectListClass}"><a  th:href="@{/project/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Department</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${departmentAddClass}"><a  th:href="@{/department/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${departmentListClass}"><a  th:href="@{/department/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Designation</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${designationAddClass}"><a  th:href="@{/designation/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${designationListClass}"><a  th:href="@{/designation/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Funding Source Org</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${fundingSourceOrgAddClass}"><a  th:href="@{/funding-source-org/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${fundingSourceOrgListClass}"><a th:href="@{/funding-source-org/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Training Category</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${trainingCategoryAddClass}"><a th:href="@{/training-category/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${trainingCategoryListClass}"><a th:href="@{/training-category/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Role</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${roleAddClass}"><a th:href="@{/role/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${roleListClass}"><a th:href="@{/role/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

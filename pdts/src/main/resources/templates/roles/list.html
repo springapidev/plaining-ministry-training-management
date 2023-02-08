@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout.html}">
+<!-- BEGIN : Head-->
+
+<head>
+    <title>List - Employee</title>
+</head>
+<!-- END : Head-->
+<body>
+<div class="content-wrapper" layout:fragment="main-content">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">List Of Role</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="table-responsive">
+                       <table id="list" class="table">
+                           <thead>
+                           <tr>
+                               <th>ID</th>
+                               <th>Name</th>
+                               <th>Note</th>
+                               <th>Status</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr th:each="role : ${list}">
+                               <td th:text="${role?.id}"></td>
+                               <td th:text="${role?.name}"></td>
+                               <td th:text="${role?.note}"></td>
+                               <td th:text="${role?.status}"></td>
+                           </tr>
+                           </tbody>
+
+                       </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $("#list").DataTable();
+</script>
+</body>
+
+</html>
