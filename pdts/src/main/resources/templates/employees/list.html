@@ -15,7 +15,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">List Of Employee</h4>
+              <div class="row">
+                  <div class="col-6">
+                      <h4 class="card-title">List Of Employee</h4>
+                  </div>
+                  <div class="col-6 text-right">
+                      <h4 class="card-title"><a th:href="@{/employee/add}">Add New</a></h4>
+                  </div>
+              </div>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -23,18 +30,28 @@
                        <table id="list" class="table">
                            <thead>
                            <tr>
-                               <th>head 1</th>
-                               <th>head 2</th>
+                               <th>ID</th>
+                               <th>Name</th>
+                               <th>Email</th>
+                               <th>Designation</th>
+                               <th>Department</th>
+                               <th>Status</th>
+                               <th>Action</th>
                            </tr>
                            </thead>
                            <tbody>
-                           <tr>
-                               <td>row 1 data 1</td>
-                               <td>row 1 data 2</td>
-                           </tr>
-                           <tr>
-                               <td>row 2 data 1</td>
-                               <td>row 2 data 2</td>
+                           <tr th:each="employee : ${list}">
+                               <td th:text="${employee?.id}"></td>
+                               <td th:text="${employee?.firstName}+' '+${employee?.lastName}"></td>
+                               <td th:text="${employee?.email}"></td>
+                               <td th:text="${employee?.designation?.name}"></td>
+                               <td th:text="${employee?.department?.name}"></td>
+                               <td th:text="${employee?.status}"></td>
+                               <td>
+                                   <a th:href="@{/employee/view/}+${employee?.id}"><i class="ft-eye"></i></a>
+                                   <a th:href="@{/employee/update/}+${employee?.id}"><i class="ft-edit"></i></a>
+                                   <a th:href="@{/employee/delete/}+${employee?.id}"><i class="ft-trash-2"></i></a>
+                               </td>
                            </tr>
                            </tbody>
 
@@ -49,6 +66,7 @@
 <script>
     $("#list").DataTable();
 </script>
+
 </body>
 
 </html>

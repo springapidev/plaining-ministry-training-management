@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout.html}">
+<!-- BEGIN : Head-->
+
+<head>
+    <title>Update Employee</title>
+</head>
+<!-- END : Head-->
+<body>
+<div class="content-wrapper" layout:fragment="main-content">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Update Employee</h4>
+                    </div>
+                    <div class="col-6 text-right">
+                        <h4 class="card-title"><a th:href="@{/employee/list}">View List</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="col-lg-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title danger" th:text="${errMsg}"></h4>
+                                <h4 class="card-title success" th:text="${successMsg}"></h4>
+
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <form th:object="${employee}" th:method="POST" th:action="@{/employee/update}">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" id="firstName" class="form-control round" th:field="*{firstName}" placeholder="Enter First Name Here">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" id="lastName" class="form-control round" th:field="*{lastName}" placeholder="Enter Last Name Here">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastDegree">Last Degree</label>
+                                            <input type="text" id="lastDegree" class="form-control round" th:field="*{lastDegree}" placeholder="Enter Last Degree Here">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" class="form-control round" th:field="*{email}" placeholder="Enter Email Here">
+                                        </div>
+                                        <div class="form-group">
+                                            <label  for="password">Password</label>
+                                            <input type="password" id="password" class="form-control round" th:field="*{password}" placeholder="Enter Password Here">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dob">Date Of Birth</label>
+                                            <input type="date" id="dob" class="form-control round" th:field="*{dob}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="joiningDate">Joining Date</label>
+                                            <input type="date" id="joiningDate" class="form-control round" th:field="*{joiningDate}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="retirementDate">Retirement Date</label>
+                                            <input type="date" id="retirementDate" class="form-control round" th:field="*{retirementDate}">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="d-inline-block mr-2" th:each="g : ${T(bd.gov.plandiv.pdts.enums.Gender).values()}">
+                                                    <div class="radio radio-primary">
+                                                        <input type="radio" th:field="*{gender}" th:value="${g}"  th:id="${g}">
+                                                        <label th:for="${g}" th:text="${g}"></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+
+                                            <fieldset class="form-group">
+                                                <label for="roles" >Roles</label>
+                                                <select class="form-control" id="roles" th:field="*{roles}" multiple>
+                                                    <option th:each="role : ${roleList}" th:value="${role?.id}" th:text="${role?.name}"></option>
+                                                </select>
+                                            </fieldset>
+                                        <fieldset class="form-group">
+                                            <label for="religion" >Religion</label>
+                                            <select class="form-control" id="religion" th:field="*{religion}">
+                                                <option th:each="state :  ${T(bd.gov.plandiv.pdts.enums.Religion).values()}" th:value="${state}" th:text="${state}"></option>
+
+                                            </select>
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <label for="department" >Department</label>
+                                            <select class="form-control" id="department" th:field="*{department}">
+                                                <option th:each="role : ${departmentList}" th:value="${role?.id}" th:text="${role?.name}"></option>
+
+                                            </select>
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <label for="designation" >Designation</label>
+                                            <select class="form-control" id="designation" th:field="*{designation}">
+                                                <option th:each="role : ${designationList}" th:value="${role?.id}" th:text="${role?.name}"></option>
+
+                                            </select>
+                                        </fieldset>
+                                        <div class="form-group">
+                                            <label for="file">Photo</label>
+                                            <input type="file" id="file" class="form-control round" name="file">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="biography">Biography</label>
+                                            <textarea id="biography" rows="4" class="form-control round" th:field="*{biography}" placeholder="Enter biography"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="d-inline-block mr-2">
+                                                    <div class="radio radio-primary">
+                                                        <input type="radio" th:field="*{status}" th:value="true"  id="color-radio-1"  checked="">
+                                                        <label for="color-radio-1">Active</label>
+                                                    </div>
+                                                </li>
+                                                <li class="d-inline-block mr-2">
+                                                    <div class="radio radio-secondary">
+                                                        <input type="radio" th:field="*{status}" th:value="false" id="color-radio-2">
+                                                        <label for="color-radio-2">In Active</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Save</button>
+                                        <button type="reset" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>

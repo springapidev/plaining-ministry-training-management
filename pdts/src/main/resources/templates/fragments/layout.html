@@ -41,6 +41,7 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
     <!-- END: Custom CSS-->
+
 </head>
 <!-- END : Head-->
 
@@ -131,6 +132,15 @@
 <script>
     $("#list").DataTable();
 </script>
+<script type="text/javascript">
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+    }
+</script>
+
 </body>
 <!-- END : Body-->
 

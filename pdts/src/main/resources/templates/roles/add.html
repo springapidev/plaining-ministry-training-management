@@ -15,7 +15,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Add Role</h4>
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Add Role</h4>
+                    </div>
+                    <div class="col-6 text-right">
+                        <h4 class="card-title"><a th:href="@{/role/list}">View List</a></h4>
+                    </div>
+                </div>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -31,7 +38,7 @@
                                     <form th:object="${role}" th:method="POST" th:action="@{/role/add}">
                                         <div class="form-group">
                                             <label class="sr-only" for="hidden-label-form-1">Name</label>
-                                            <input type="text" id="hidden-label-form-1" class="form-control round" th:field="*{name}" placeholder="Company Name">
+                                            <input type="text" id="hidden-label-form-1" class="form-control round" th:field="*{name}" placeholder="Enter Name Here">
                                         </div>
 
 
@@ -44,13 +51,13 @@
                                             <ul class="list-unstyled mb-0">
                                                 <li class="d-inline-block mr-2">
                                                     <div class="radio radio-primary">
-                                                        <input type="radio" th:field="*{note}" th:value="true"  id="color-radio-1"  checked="">
+                                                        <input type="radio" th:field="*{status}" th:value="true"  id="color-radio-1"  checked="">
                                                         <label for="color-radio-1">Active</label>
                                                     </div>
                                                 </li>
                                                 <li class="d-inline-block mr-2">
                                                     <div class="radio radio-secondary">
-                                                        <input type="radio" th:field="*{note}" th:value="false" id="color-radio-2">
+                                                        <input type="radio" th:field="*{status}" th:value="false" id="color-radio-2">
                                                         <label for="color-radio-2">In Active</label>
                                                     </div>
                                                 </li>

@@ -45,7 +45,7 @@ public class RoleController {
     @GetMapping(value = "update/{id}")
     public String showUpdate(@PathVariable("id") Long id,Model model){
         model.addAttribute("role",this.service.findById(id));
-        return "roles/update";
+        return "roles/edit";
     }
     @PostMapping(value = "update/{id}")
     public String update(@Validated Role role, BindingResult result,@PathVariable("id") Long id, Model model){
@@ -65,7 +65,7 @@ public class RoleController {
             }
         }
 
-        return "roles/update";
+        return "roles/edit";
     }
     @GetMapping(value = "list")
     public String showList(Model model){

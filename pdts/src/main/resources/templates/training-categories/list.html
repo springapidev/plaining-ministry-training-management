@@ -5,7 +5,7 @@
 <!-- BEGIN : Head-->
 
 <head>
-    <title>List - Employee</title>
+    <title>List - Training Category</title>
 </head>
 <!-- END : Head-->
 <body>
@@ -15,7 +15,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">List Of Employee</h4>
+              <div class="row">
+                  <div class="col-6">
+                      <h4 class="card-title">List Of Training Category</h4>
+                  </div>
+                  <div class="col-6 text-right">
+                      <h4 class="card-title"><a th:href="@{/role/add}">Add New</a></h4>
+                  </div>
+              </div>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -23,18 +30,23 @@
                        <table id="list" class="table">
                            <thead>
                            <tr>
-                               <th>head 1</th>
-                               <th>head 2</th>
+                               <th>ID</th>
+                               <th>Name</th>
+                               <th>Note</th>
+                               <th>Status</th>
+                               <th>Action</th>
                            </tr>
                            </thead>
                            <tbody>
-                           <tr>
-                               <td>row 1 data 1</td>
-                               <td>row 1 data 2</td>
-                           </tr>
-                           <tr>
-                               <td>row 2 data 1</td>
-                               <td>row 2 data 2</td>
+                           <tr th:each="tcategory : ${list}">
+                               <td th:text="${tcategory?.id}"></td>
+                               <td th:text="${tcategory?.name}"></td>
+                               <td th:text="${tcategory?.note}"></td>
+                               <td th:text="${tcategory?.status}"></td>
+                               <td>
+                                   <a th:href="@{/training-category/update/}+${tcategory?.id}"><i class="ft-edit"></i></a>
+                                   <a th:href="@{/training-category/delete/}+${tcategory?.id}"><i class="ft-trash-2"></i></a>
+                               </td>
                            </tr>
                            </tbody>
 
@@ -49,6 +61,7 @@
 <script>
     $("#list").DataTable();
 </script>
+
 </body>
 
 </html>
