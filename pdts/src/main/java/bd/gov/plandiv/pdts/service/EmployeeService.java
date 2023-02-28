@@ -1,5 +1,6 @@
 package bd.gov.plandiv.pdts.service;
 
+import bd.gov.plandiv.pdts.entity.Department;
 import bd.gov.plandiv.pdts.entity.Employee;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface EmployeeService {
     Optional<Employee> findByEmail(String email);
     boolean delete(Long id);
     List<Employee> findAll();
+    List<Employee> findAllByDepartment(Department department);Employee findByEmailOrMobileOrIdNoContaining(String email, String mobile, String idNo);
+
  }

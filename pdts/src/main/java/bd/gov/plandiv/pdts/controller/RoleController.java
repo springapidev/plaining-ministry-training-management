@@ -74,7 +74,7 @@ public class RoleController {
     }
 
 
-    @GetMapping(value = "delete/{id}")
+    @PostMapping(value = "delete/{id}")
     public String delete(@PathVariable("id") Long id){
         boolean status=this.service.delete(id);
         return "redirect:/role/list";

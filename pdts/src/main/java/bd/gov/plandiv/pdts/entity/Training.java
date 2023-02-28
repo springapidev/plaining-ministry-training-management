@@ -27,4 +27,5 @@ public class Training {
     private boolean status;
 
 
+
 }

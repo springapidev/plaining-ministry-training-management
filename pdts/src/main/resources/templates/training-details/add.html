@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout.html}">
+<!-- BEGIN : Head-->
+
+<head>
+    <title>Add training-details</title>
+    <style>
+        .required{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<!-- END : Head-->
+<body>
+<div class="content-wrapper" layout:fragment="main-content">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Add training-details</h4>
+                    </div>
+                    <div class="col-6 text-right">
+                        <h4 class="card-title"><a th:href="@{/training-details/list}">View List</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="col-lg-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title danger" th:text="${errMsg}"></h4>
+                                <h4 class="card-title success" th:text="${successMsg}"></h4>
+
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <form th:object="${trainingDetails}" th:method="POST" th:action="@{/training-details/add}">
+
+                                        <fieldset class="form-group">
+                                            <label for="employee" >Employee ( <span class="required">*</span> )</label>
+                                            <select class="form-control"  required id="employee" th:field="*{employee}">
+                                                <option value="0">Select One</option>
+                                                <option th:each="employee : ${employees}" th:value="${employee?.id}" th:text="${employee?.firstName}+' '+${employee?.lastName}"></option>
+                                            </select>
+                                        </fieldset>
+
+
+                                            <fieldset class="form-group">
+                                                <label for="roles" >Training ( <span class="required">*</span> )</label>
+                                                <select class="form-control"  required id="roles" th:field="*{training}">
+                                                    <option value="0">Select One</option>
+                                                    <option th:each="training : ${trainings}" th:value="${training?.id}" th:text="${training?.name}"></option>
+                                                </select>
+                                            </fieldset>
+
+
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="d-inline-block mr-2">
+                                                    <div class="radio radio-primary">
+                                                        <input type="radio" th:field="*{status}" th:value="true"  id="color-radio-1"  checked>
+                                                        <label for="color-radio-1">Active</label>
+                                                    </div>
+                                                </li>
+                                                <li class="d-inline-block mr-2">
+                                                    <div class="radio radio-secondary">
+                                                        <input type="radio" th:field="*{status}" th:value="false" id="color-radio-2">
+                                                        <label for="color-radio-2">In Active</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Assign</button>
+                                        <button type="reset" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>

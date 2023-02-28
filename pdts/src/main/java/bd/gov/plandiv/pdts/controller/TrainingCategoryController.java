@@ -46,7 +46,7 @@ public class TrainingCategoryController {
     }
     @GetMapping(value = "update/{id}")
     public String showUpdate(@PathVariable("id") Long id, Model model){
-        model.addAttribute("designation",this.service.findById(id));
+        model.addAttribute("trainingCategory",this.service.findById(id));
         return "training-categories/edit";
     }
 
@@ -61,7 +61,7 @@ public class TrainingCategoryController {
                 boolean status = service.update(trainingCategory);
                 if (status) {
                     model.addAttribute("successMsg", "TrainingCategory Updated Successfully");
-                    model.addAttribute("role",this.service.findById(id));
+                    model.addAttribute("trainingCategory",this.service.findById(id));
                 }else {
                     model.addAttribute("errMsg","Something is wrong");
                 }
@@ -70,6 +70,13 @@ public class TrainingCategoryController {
 
         return "training-categories/edit";
     }
+
+    @PostMapping(value = "delete/{id}")
+    public String delete(@PathVariable("id") Long id){
+        boolean status=this.service.delete(id);
+        return "redirect:/training-category/list";
+    }
+
     @GetMapping(value = "list")
     public String showList(Model model){
         model.addAttribute("trainingCategoryListClass","active");

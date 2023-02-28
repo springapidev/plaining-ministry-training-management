@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout.html}">
+      layout:decorate="~{fragments/layout-list.html}">
 <!-- BEGIN : Head-->
 
 <head>
@@ -20,7 +20,7 @@
                       <h4 class="card-title">List Of Training Category</h4>
                   </div>
                   <div class="col-6 text-right">
-                      <h4 class="card-title"><a th:href="@{/role/add}">Add New</a></h4>
+                      <h4 class="card-title"><a th:href="@{/training-category/add}">Add New</a></h4>
                   </div>
               </div>
             </div>
@@ -38,14 +38,45 @@
                            </tr>
                            </thead>
                            <tbody>
-                           <tr th:each="tcategory : ${list}">
+                           <tr th:each="tcategory,i : ${list}">
                                <td th:text="${tcategory?.id}"></td>
                                <td th:text="${tcategory?.name}"></td>
                                <td th:text="${tcategory?.note}"></td>
                                <td th:text="${tcategory?.status}"></td>
                                <td>
-                                   <a th:href="@{/training-category/update/}+${tcategory?.id}"><i class="ft-edit"></i></a>
-                                   <a th:href="@{/training-category/delete/}+${tcategory?.id}"><i class="ft-trash-2"></i></a>
+                                   <a th:href="@{/training-category/update/}+${tcategory?.id}"><i class="ft-edit fa-2x"></i></a>
+                                   <a th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
+                                           class="fa fa-trash fa-2x"></i></a>
+                                   <!-- Modal HTML -->
+                                   <div th:id="|myModal${i.index}|" class="modal fade">
+                                       <div class="modal-dialog modal-confirm">
+                                           <form th:action="@{/training-category/delete/}+${tcategory?.id}"
+                                                 method="post">
+                                               <div class="modal-content">
+                                                   <div class="modal-header flex-column">
+
+                                                       <h4 class="modal-title w-100">Are you sure?</h4>
+                                                       <button type="button" class="close" data-dismiss="modal"
+                                                               aria-hidden="true">&times;
+                                                       </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <p>Do you really want to delete? </p>
+                                                       <p>Please remember, this process cannot be undone!</p>
+                                                   </div>
+                                                   <div class="modal-footer justify-content-center">
+                                                       <button type="button" class="btn btn-secondary"
+                                                               data-dismiss="modal">No, Cancel
+                                                       </button>
+                                                       <button type="submit" class="btn btn-danger">Yes,
+                                                           Delete
+                                                       </button>
+                                                   </div>
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+
                                </td>
                            </tr>
                            </tbody>

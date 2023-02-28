@@ -11,62 +11,63 @@
 <body>
 <div class="content-wrapper" layout:fragment="main-content">
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-6">
-                        <h4 class="card-title">Update Training Category</h4>
-                    </div>
-                    <div class="col-6 text-right">
-                        <h4 class="card-title"><a th:href="@{/training-category/list}">View List</a></h4>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="card-title">Update Training Category</h4>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h4 class="card-title"><a th:href="@{/training-category/list}">View List</a></h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-content">
-                <div class="card-body">
-                    <div class="col-lg-12 col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title danger" th:text="${errMsg}"></h4>
-                                <h4 class="card-title success" th:text="${successMsg}"></h4>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title danger" th:text="${errMsg}"></h4>
+                                    <h4 class="card-title success" th:text="${successMsg}"></h4>
 
-                            </div>
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <form th:object="${trainingCategory}" th:method="POST" th:action="@{/training-category/update/}+${id}">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="hidden-label-form-1">Name</label>
-                                            <input type="hidden" name="id">
-                                            <input type="text" id="hidden-label-form-1" class="form-control round" th:field="*{name}" placeholder="Enter Name Here">
-                                        </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form th:object="${trainingCategory}" th:method="POST" th:action="@{/training-category/update/}+${id}">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="hidden-label-form-1">Name</label>
+                                                <input type="hidden" th:field="*{id}">
+                                                <input type="text" id="hidden-label-form-1" class="form-control round" th:field="*{name}" placeholder="Enter Name Here">
+                                            </div>
 
 
-                                        <div class="form-group">
-                                            <label class="sr-only" for="hidden-label-form-6">Note</label>
-                                            <textarea id="hidden-label-form-6" rows="4" class="form-control round" th:field="*{note}" placeholder="Details"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only">Status</label>
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="d-inline-block mr-2">
-                                                    <div class="radio radio-primary">
-                                                        <input type="radio" th:field="*{status}" th:value="true"  id="color-radio-1"  checked="">
-                                                        <label for="color-radio-1">Active</label>
-                                                    </div>
-                                                </li>
-                                                <li class="d-inline-block mr-2">
-                                                    <div class="radio radio-secondary">
-                                                        <input type="radio" th:field="*{status}" th:value="false" id="color-radio-2">
-                                                        <label for="color-radio-2">In Active</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Save</button>
-                                        <button type="reset" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancel</button>
-                                    </form>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="hidden-label-form-6">Note</label>
+                                                <textarea id="hidden-label-form-6" rows="4" class="form-control round" th:field="*{note}" placeholder="Details"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only">Status</label>
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="d-inline-block mr-2">
+                                                        <div class="radio radio-primary">
+                                                            <input type="radio" th:field="*{status}" th:value="true"  id="color-radio-1"  checked="">
+                                                            <label for="color-radio-1">Active</label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-inline-block mr-2">
+                                                        <div class="radio radio-secondary">
+                                                            <input type="radio" th:field="*{status}" th:value="false" id="color-radio-2">
+                                                            <label for="color-radio-2">In Active</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Save</button>
+                                            <button type="reset" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancel</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +76,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 

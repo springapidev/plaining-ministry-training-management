@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout.html}">
+      layout:decorate="~{fragments/layout-list.html}">
 <!-- BEGIN : Head-->
 
 <head>
@@ -18,7 +18,7 @@
             <div class="card-header">
               <div class="row">
                   <div class="col-6">
-                      <h4 class="card-title">List Of department</h4>
+                          <h4 class="card-title">List Of department</h4>
                   </div>
                   <div class="col-6 text-right">
                       <h4 class="card-title"><a th:href="@{/department/add}">Add New</a></h4>
@@ -39,14 +39,46 @@
                            </tr>
                            </thead>
                            <tbody>
-                           <tr th:each="department : ${list}">
-                               <td th:text="${department?.id}"></td>
+                           <tr th:each="department, i: ${list}">
+                               <td th:text="${i.index+1}"></td>
                                <td th:text="${department?.name}"></td>
                                <td th:text="${department?.note}"></td>
                                <td th:text="${department?.status}"></td>
                                <td>
-                                   <a th:href="@{/department/update/}+${department?.id}"><i class="ft-edit"></i></a>
-                                   <a th:href="@{/department/delete/}+${department?.id}"><i class="ft-trash-2"></i></a>
+                                   <a th:href="@{/department/update/}+${department?.id}"><i class="ft-edit fa-2x"></i></a>
+
+                                   <a th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
+                                           class="fa fa-trash fa-2x"></i></a>
+                                   <!-- Modal HTML -->
+                                   <div th:id="|myModal${i.index}|" class="modal fade">
+                                       <div class="modal-dialog modal-confirm">
+                                           <form th:action="@{/department/delete/}+${department?.id}"
+                                                 method="post">
+                                               <div class="modal-content">
+                                                   <div class="modal-header flex-column">
+
+                                                       <h4 class="modal-title w-100">Are you sure?</h4>
+                                                       <button type="button" class="close" data-dismiss="modal"
+                                                               aria-hidden="true">&times;
+                                                       </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <p>Do you really want to delete? </p>
+                                                       <p>Please remember, this process cannot be undone!</p>
+                                                   </div>
+                                                   <div class="modal-footer justify-content-center">
+                                                       <button type="button" class="btn btn-secondary"
+                                                               data-dismiss="modal">No, Cancel
+                                                       </button>
+                                                       <button type="submit" class="btn btn-danger">Yes,
+                                                           Delete
+                                                       </button>
+                                                   </div>
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+
                                </td>
                            </tr>
                            </tbody>
@@ -59,9 +91,7 @@
     </div>
 </div>
 </div>
-<script>
-    $("#list").DataTable();
-</script>
+
 
 </body>
 

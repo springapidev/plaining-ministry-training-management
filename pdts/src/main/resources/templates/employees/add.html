@@ -7,8 +7,9 @@
 <head>
     <title>Add Employee</title>
     <style>
-        .error{
+        .required{
             color: red;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -42,52 +43,50 @@
                                 <div class="card-body">
                                     <form th:object="${employee}" th:method="POST" th:action="@{/employee/add}">
                                         <div class="form-group">
-                                            <label for="firstName">First Name</label>
-                                            <input type="text" id="firstName" class="form-control round" th:field="*{firstName}" placeholder="Enter First Name Here">
-                                            <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}" />
+                                            <label for="firstName">First Name ( <span class="required">*</span> )</label>
+                                            <input type="text" required id="firstName" class="form-control round" th:field="*{firstName}" placeholder="Enter First Name Here">
                                         </div>
                                         <div class="form-group">
                                             <label for="lastName">Last Name</label>
                                             <input type="text" id="lastName" class="form-control round" th:field="*{lastName}" placeholder="Enter Last Name Here">
                                         </div>
                                         <div class="form-group">
-                                            <label for="lastDegree">Last Degree</label>
-                                            <input type="text" id="lastDegree" class="form-control round" th:field="*{lastDegree}" placeholder="Enter Last Degree Here">
-                                            <p th:if="${#fields.hasErrors('lastDegree')}" th:errorclass="error" th:errors="*{lastDegree}" />
+                                            <label for="idNo">Id No ( <span class="required">*</span> )</label>
+                                            <input type="text" required id="idNo" class="form-control round" th:field="*{idNo}" placeholder="Enter Id No Here">
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" id="email" class="form-control round" th:field="*{email}" placeholder="Enter Email Here">
-                                            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
+                                            <label for="grade">Grade ( <span class="required">*</span> )</label>
+                                            <input type="text" required id="grade" class="form-control round" th:field="*{grade}" placeholder="Enter Grade Here">
                                         </div>
                                         <div class="form-group">
-                                            <label  for="password">Password</label>
-                                            <input type="password" id="password" class="form-control round" th:field="*{password}" placeholder="Enter Password Here">
-                                            <p th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}" />
+                                            <label for="lastDegree">Last Degree ( <span class="required">*</span> )</label>
+                                            <input type="text" required id="lastDegree" class="form-control round" th:field="*{lastDegree}" placeholder="Enter Last Degree Here">
                                         </div>
                                         <div class="form-group">
-                                            <label for="dob">Date Of Birth</label>
-                                            <input type="date" id="dob" class="form-control round" th:field="*{dob}">
-                                            <p th:if="${#fields.hasErrors('dob')}" th:errorclass="error" th:errors="*{dob}" />
+                                            <label for="email">Email ( <span class="required">*</span> )</label>
+                                            <input type="email" required id="email" class="form-control round" th:field="*{email}" placeholder="Enter Email Here">
                                         </div>
                                         <div class="form-group">
-                                            <label for="joiningDate">Joining Date</label>
-                                            <input type="date" id="joiningDate" class="form-control round" th:field="*{joiningDate}">
-                                            <p th:if="${#fields.hasErrors('joiningDate')}" th:errorclass="error" th:errors="*{joiningDate}" />
+                                            <label  for="password">Password ( <span class="required">*</span> )</label>
+                                            <input type="password" required id="password" class="form-control round" th:field="*{password}" placeholder="Enter Password Here">
                                         </div>
                                         <div class="form-group">
-                                            <label for="retirementDate">Retirement Date</label>
-                                            <input type="date" id="retirementDate" class="form-control round" th:field="*{retirementDate}">
-                                            <p th:if="${#fields.hasErrors('retirementDate')}" th:errorclass="error" th:errors="*{retirementDate}" />
+                                            <label for="dob">Date Of Birth ( <span class="required">*</span> )</label>
+                                            <input type="date" id="dob" required class="form-control round" th:field="*{dob}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="joiningDate">Joining Date ( <span class="required">*</span> )</label>
+                                            <input type="date" id="joiningDate" required class="form-control round" th:field="*{joiningDate}">
                                         </div>
 
 
+
                                         <div class="form-group">
-                                            <label>Gender</label>
+                                            <label>Gender ( <span class="required">*</span> )</label>
                                             <ul class="list-unstyled mb-0">
                                                 <li class="d-inline-block mr-2" th:each="g : ${T(bd.gov.plandiv.pdts.enums.Gender).values()}">
                                                     <div class="radio radio-primary">
-                                                        <input type="radio" th:field="*{gender}" th:value="${g}"  th:id="${g}">
+                                                        <input type="radio"  th:field="*{gender}" th:value="${g}"  th:id="${g}">
                                                         <label th:for="${g}" th:text="${g}"></label>
                                                     </div>
                                                 </li>
@@ -97,28 +96,28 @@
 
 
                                             <fieldset class="form-group">
-                                                <label for="roles" >Roles</label>
-                                                <select class="form-control" id="roles" th:field="*{roles}" multiple>
+                                                <label for="roles" >Roles ( <span class="required">*</span> )</label>
+                                                <select class="form-control"  required id="roles" th:field="*{roles}" multiple>
                                                     <option th:each="role : ${roleList}" th:value="${role?.id}" th:text="${role?.name}"></option>
                                                 </select>
                                             </fieldset>
                                         <fieldset class="form-group">
-                                            <label for="religion" >Religion</label>
-                                            <select class="form-control" id="religion" th:field="*{religion}">
+                                            <label for="religion" >Religion ( <span class="required">*</span> )</label>
+                                            <select class="form-control" required id="religion" th:field="*{religion}">
                                                 <option th:each="state :  ${T(bd.gov.plandiv.pdts.enums.Religion).values()}" th:value="${state}" th:text="${state}"></option>
 
                                             </select>
                                         </fieldset>
                                         <fieldset class="form-group">
-                                            <label for="department" >Department</label>
-                                            <select class="form-control" id="department" th:field="*{department}">
+                                            <label for="department" >Department ( <span class="required">*</span> )</label>
+                                            <select class="form-control" required id="department" th:field="*{department}">
                                                 <option th:each="role : ${departmentList}" th:value="${role?.id}" th:text="${role?.name}"></option>
 
                                             </select>
                                         </fieldset>
                                         <fieldset class="form-group">
-                                            <label for="designation" >Designation</label>
-                                            <select class="form-control" id="designation" th:field="*{designation}">
+                                            <label for="designation" >Designation ( <span class="required">*</span> )</label>
+                                            <select class="form-control" required id="designation" th:field="*{designation}">
                                                 <option th:each="role : ${designationList}" th:value="${role?.id}" th:text="${role?.name}"></option>
 
                                             </select>
@@ -127,7 +126,6 @@
                                         <div class="form-group">
                                             <label for="biography">Biography</label>
                                             <textarea id="biography" rows="4" class="form-control round" th:field="*{biography}" placeholder="Enter biography"></textarea>
-                                            <p th:if="${#fields.hasErrors('biography')}" th:errorclass="error" th:errors="*{biography}" />
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>

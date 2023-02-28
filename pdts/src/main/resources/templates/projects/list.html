@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout.html}">
+      layout:decorate="~{fragments/layout-list.html}">
 <!-- BEGIN : Head-->
 
 <head>
-    <title>List - Employee</title>
+    <title>List - Project</title>
 </head>
 <!-- END : Head-->
 <body>
@@ -15,7 +15,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">List Of Employee</h4>
+              <div class="row">
+                  <div class="col-6">
+                      <h4 class="card-title">List Of Project</h4>
+                  </div>
+                  <div class="col-6 text-right">
+                      <h4 class="card-title"><a th:href="@{/project/add}">Add New</a></h4>
+                  </div>
+              </div>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -23,18 +30,58 @@
                        <table id="list" class="table">
                            <thead>
                            <tr>
-                               <th>head 1</th>
-                               <th>head 2</th>
+                               <th>ID</th>
+                               <th>Name</th>
+                               <th>No Of trainee</th>
+                               <th>Note</th>
+                               <th>Status</th>
+                               <th>Action</th>
                            </tr>
                            </thead>
                            <tbody>
-                           <tr>
-                               <td>row 1 data 1</td>
-                               <td>row 1 data 2</td>
-                           </tr>
-                           <tr>
-                               <td>row 2 data 1</td>
-                               <td>row 2 data 2</td>
+                           <tr th:each="project,i : ${list}">
+                               <td th:text="${project?.id}"></td>
+                               <td th:text="${project?.name}"></td>
+                               <td th:text="${project?.noOfTrainee}"></td>
+                               <td>
+                                   <span th:each=" fs : ${project?.fundingSourceOrgs}" th:text="${fs?.name}+' '"></span>
+                               </td>
+                               <td th:text="${project?.status}"></td>
+                               <td>
+                                   <a th:href="@{/project/update/}+${project?.id}"><i class="ft-edit fa-2x"></i></a>
+                                   <a th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
+                                           class="fa fa-trash fa-2x"></i></a>
+                                   <!-- Modal HTML -->
+                                   <div th:id="|myModal${i.index}|" class="modal fade">
+                                       <div class="modal-dialog modal-confirm">
+                                           <form th:action="@{/project/delete/}+${project?.id}"
+                                                 method="post">
+                                               <div class="modal-content">
+                                                   <div class="modal-header flex-column">
+
+                                                       <h4 class="modal-title w-100">Are you sure?</h4>
+                                                       <button type="button" class="close" data-dismiss="modal"
+                                                               aria-hidden="true">&times;
+                                                       </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <p>Do you really want to delete? </p>
+                                                       <p>Please remember, this process cannot be undone!</p>
+                                                   </div>
+                                                   <div class="modal-footer justify-content-center">
+                                                       <button type="button" class="btn btn-secondary"
+                                                               data-dismiss="modal">No, Cancel
+                                                       </button>
+                                                       <button type="submit" class="btn btn-danger">Yes,
+                                                           Delete
+                                                       </button>
+                                                   </div>
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+
+                               </td>
                            </tr>
                            </tbody>
 
@@ -49,6 +96,7 @@
 <script>
     $("#list").DataTable();
 </script>
+
 </body>
 
 </html>

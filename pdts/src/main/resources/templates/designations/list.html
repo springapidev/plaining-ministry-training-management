@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout.html}">
+      layout:decorate="~{fragments/layout-list.html}">
 <!-- BEGIN : Head-->
 
 <head>
@@ -39,14 +39,45 @@
                            </tr>
                            </thead>
                            <tbody>
-                           <tr th:each="designation : ${list}">
+                           <tr th:each="designation,i : ${list}">
                                <td th:text="${designation?.id}"></td>
                                <td th:text="${designation?.name}"></td>
                                <td th:text="${designation?.note}"></td>
                                <td th:text="${designation?.status}"></td>
                                <td>
-                                   <a th:href="@{/designation/update/}+${designation?.id}"><i class="ft-edit"></i></a>
-                                   <a th:href="@{/designation/delete/}+${designation?.id}"><i class="ft-trash-2"></i></a>
+                                   <a th:href="@{/designation/update/}+${designation?.id}"><i class="ft-edit fa-2x"></i></a>
+                                   <a th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
+                                           class="fa fa-trash fa-2x"></i></a>
+                                   <!-- Modal HTML -->
+                                   <div th:id="|myModal${i.index}|" class="modal fade">
+                                       <div class="modal-dialog modal-confirm">
+                                           <form th:action="@{/designation/delete/}+${designation?.id}"
+                                                 method="post">
+                                               <div class="modal-content">
+                                                   <div class="modal-header flex-column">
+
+                                                       <h4 class="modal-title w-100">Are you sure?</h4>
+                                                       <button type="button" class="close" data-dismiss="modal"
+                                                               aria-hidden="true">&times;
+                                                       </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <p>Do you really want to delete? </p>
+                                                       <p>Please remember, this process cannot be undone!</p>
+                                                   </div>
+                                                   <div class="modal-footer justify-content-center">
+                                                       <button type="button" class="btn btn-secondary"
+                                                               data-dismiss="modal">No, Cancel
+                                                       </button>
+                                                       <button type="submit" class="btn btn-danger">Yes,
+                                                           Delete
+                                                       </button>
+                                                   </div>
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+
                                </td>
                            </tr>
                            </tbody>

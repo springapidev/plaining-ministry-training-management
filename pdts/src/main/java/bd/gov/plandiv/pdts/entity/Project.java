@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -14,8 +16,8 @@ public class Project {
     @Column(unique=true)
     private String name;
     private int noOfTrainee;
-    @ManyToOne
-    private FundingSourceOrg fundingSourceOrg;
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    private Set<FundingSourceOrg> fundingSourceOrgs;
 
     private boolean status;
 

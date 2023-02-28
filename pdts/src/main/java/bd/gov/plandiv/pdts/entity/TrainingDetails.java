@@ -13,10 +13,9 @@ public class TrainingDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-   private Employee employee;
+    private Employee employee;
     @ManyToOne
-   private Training training;
-
+    private Training training;
     private boolean status;
 
 

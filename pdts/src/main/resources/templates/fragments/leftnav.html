@@ -31,6 +31,24 @@
 
                 </ul>
             </li>
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Assign Training</span></a>
+                <ul class="menu-content">
+                    <li th:class="${trainingDetailsAddClass}"><a  th:href="@{/training-details/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Assign</span></a>
+                    </li>
+                    <li th:class="${trainingDetailsListClass}"><a  th:href="@{/training-details/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">List</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Foreign Training</span></a>
+                <ul class="menu-content">
+                    <li th:class="${foreignTourAddClass}"><a  th:href="@{/foreign-tour/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
+                    </li>
+                    <li th:class="${foreignTourListClass}"><a  th:href="@{/foreign-tour/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">List</span></a>
+                    </li>
+
+                </ul>
+            </li>
             <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Reporting</span></a>
                 <ul class="menu-content">
                     <li ><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
@@ -84,6 +102,14 @@
                         </ul>
                     </li>
 
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Foreign Tour Category</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${foreignTourPurposeAddClass}"><a th:href="@{/foreign-tour-purpose/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${foreignTourPurposeListClass}"><a th:href="@{/foreign-tour-purpose/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Role</span></a>
                         <ul class="menu-content">
                             <li th:class="${roleAddClass}"><a th:href="@{/role/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>

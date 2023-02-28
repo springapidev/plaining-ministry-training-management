@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout-list.html}">
+<!-- BEGIN : Head-->
+
+<head>
+    <title>List - Employee</title>
+</head>
+<!-- END : Head-->
+<body>
+<div class="content-wrapper" layout:fragment="main-content">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+              <div class="row">
+                  <div class="col-6">
+                      <h4 class="card-title">List Of Employee</h4>
+                  </div>
+                  <div class="col-6 text-right">
+                      <h4 class="card-title"><a th:href="@{/foreign-tour/add}">Add New</a></h4>
+                  </div>
+              </div>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="table-responsive">
+                       <table id="list" class="table">
+                           <thead>
+                           <tr>
+                               <th>ID</th>
+                               <th>Name</th>
+                               <th>Email</th>
+                               <th>Designation</th>
+                               <th>Department</th>
+                               <th>Status</th>
+                               <th>Action</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr th:each="foreignTour,i : ${list}">
+                               <td th:text="${foreignTour?.id}"></td>
+                               <td th:text="${foreignTour?.firstName}+' '+${foreignTour?.lastName}"></td>
+                               <td th:text="${foreignTour?.email}"></td>
+                               <td th:text="${foreignTour?.designation?.name}"></td>
+                               <td th:text="${foreignTour?.department?.name}"></td>
+                               <td th:text="${foreignTour?.status}"></td>
+                               <td>
+                                   <a th:href="@{/foreign-tour/view/}+${foreignTour?.id}"><i class="ft-eye fa-2x"></i></a>
+                                   <a th:href="@{/foreign-tour/update/}+${foreignTour?.id}"><i class="ft-edit fa-2x"></i></a>
+                                   <a th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
+                                           class="fa fa-trash fa-2x"></i></a>
+                                   <!-- Modal HTML -->
+                                   <div th:id="|myModal${i.index}|" class="modal fade">
+                                       <div class="modal-dialog modal-confirm">
+                                           <form th:action="@{/foreign-tour/delete/}+${foreignTour?.id}"
+                                                 method="post">
+                                               <div class="modal-content">
+                                                   <div class="modal-header flex-column">
+
+                                                       <h4 class="modal-title w-100">Are you sure?</h4>
+                                                       <button type="button" class="close" data-dismiss="modal"
+                                                               aria-hidden="true">&times;
+                                                       </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <p>Do you really want to delete? </p>
+                                                       <p>Please remember, this process cannot be undone!</p>
+                                                   </div>
+                                                   <div class="modal-footer justify-content-center">
+                                                       <button type="button" class="btn btn-secondary"
+                                                               data-dismiss="modal">No, Cancel
+                                                       </button>
+                                                       <button type="submit" class="btn btn-danger">Yes,
+                                                           Delete
+                                                       </button>
+                                                   </div>
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+
+                               </td>
+                           </tr>
+                           </tbody>
+
+                       </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $("#list").DataTable();
+</script>
+
+</body>
+
+</html>

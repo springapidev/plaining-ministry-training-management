@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -57,18 +57,18 @@
 </head>
 <body>
 
-<form th:action="@{/signin}" th:method="POST" style="max-width:500px;margin:auto">
+<form action="/action_page.php" style="max-width:500px;margin:auto">
   <h2>Signin</h2>
 
 
   <div class="input-container">
     <i class="fa fa-envelope icon"></i>
-    <input class="input-field" type="email" placeholder="Email" name="username">
+    <input class="input-field" type="text" placeholder="Email" name="email">
   </div>
 
   <div class="input-container">
     <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Password" name="password">
+    <input class="input-field" type="password" placeholder="Password" name="psw">
   </div>
 
   <button type="submit" class="btn">Sign In</button>

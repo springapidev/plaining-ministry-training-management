@@ -78,7 +78,7 @@ public class DesignationController {
     }
 
 
-    @GetMapping(value = "delete/{id}")
+    @PostMapping(value = "delete/{id}")
     public String delete(@PathVariable("id") Long id){
         boolean status=this.service.delete(id);
         return "redirect:/designation/list";
