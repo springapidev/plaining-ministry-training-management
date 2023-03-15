@@ -6,4 +6,5 @@ import java.io.FileNotFoundException;
 
 public interface ReportService {
     boolean exportReport(String reportFormat) throws FileNotFoundException, JRException;
+    boolean exportTrainingReport(String reportFormat) throws FileNotFoundException, JRException;
 }

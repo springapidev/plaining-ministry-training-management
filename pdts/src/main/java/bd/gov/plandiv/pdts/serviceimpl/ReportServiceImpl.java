@@ -1,8 +1,10 @@
 package bd.gov.plandiv.pdts.serviceimpl;
 
 import bd.gov.plandiv.pdts.entity.Employee;
+import bd.gov.plandiv.pdts.entity.Training;
 import bd.gov.plandiv.pdts.service.EmployeeService;
 import bd.gov.plandiv.pdts.service.ReportService;
+import bd.gov.plandiv.pdts.service.TrainingService;
 import groovy.util.logging.Slf4j;
 import lombok.AllArgsConstructor;
 import net.sf.jasperreports.engine.*;
@@ -22,6 +24,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class ReportServiceImpl implements ReportService {
     private final EmployeeService employeeService;
+    private final TrainingService trainingService;
     @Override
     public boolean exportReport(String reportFormat) throws FileNotFoundException, JRException {
         String path = "C:\\Users\\DELL\\Desktop\\Report";
@@ -39,6 +42,29 @@ public class ReportServiceImpl implements ReportService {
         }
         if (reportFormat.equalsIgnoreCase("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\employees.pdf");
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean exportTrainingReport(String reportFormat) throws FileNotFoundException, JRException {
+        String path = "C:\\Users\\DELL\\Desktop\\Report";
+        List<Training> tarinings = trainingService.findAll();
+        //load file and compile it
+        File file = ResourceUtils.getFile("classpath:test_report.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tarinings);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "Planning Ministry");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        if (reportFormat.equalsIgnoreCase("html")) {
+            JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\tarinings.html");
+            return true;
+        }
+        if (reportFormat.equalsIgnoreCase("pdf")) {
+            JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\tarinings.pdf");
             return true;
         }
 

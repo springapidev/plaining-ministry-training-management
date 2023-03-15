@@ -25,6 +25,8 @@ public class Training {
     private Project project;
 
     private boolean status;
+    @ManyToOne
+    private TrainingCategory category;
 
 
 

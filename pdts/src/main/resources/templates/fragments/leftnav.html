@@ -31,7 +31,7 @@
 
                 </ul>
             </li>
-            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Assign Training</span></a>
+            <li sec:authorize="hasAnyAuthority('ROLE_SECRETARY','ROLE_JS_DS_SAS')" class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Assign Training</span></a>
                 <ul class="menu-content">
                     <li th:class="${trainingDetailsAddClass}"><a  th:href="@{/training-details/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Assign</span></a>
                     </li>
@@ -40,7 +40,7 @@
 
                 </ul>
             </li>
-            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Foreign Training</span></a>
+            <li class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Foreign Tour</span></a>
                 <ul class="menu-content">
                     <li th:class="${foreignTourAddClass}"><a  th:href="@{/foreign-tour/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
                     </li>
@@ -49,7 +49,7 @@
 
                 </ul>
             </li>
-            <li sec:authorize="hasAuthority('ROLE_ANALYST')" class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Reporting</span></a>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SECRETARY','ROLE_JS_DS_SAS')" class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Reporting</span></a>
                 <ul class="menu-content">
                     <li ><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level">Add</span></a>
                     </li>
@@ -61,6 +61,14 @@
 
             <li sec:authorize="hasAuthority('ROLE_ADMIN')" class="has-sub nav-item"><a href="javascript:;"><i class="ft-align-left"></i><span class="menu-title" data-i18n="Role">Settings</span></a>
                 <ul class="menu-content">
+                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Funding Source Org</span></a>
+                        <ul class="menu-content">
+                            <li th:class="${fundingSourceOrgAddClass}"><a  th:href="@{/funding-source-org/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
+                            </li>
+                            <li th:class="${fundingSourceOrgListClass}"><a th:href="@{/funding-source-org/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Project</span></a>
                         <ul class="menu-content">
                             <li th:class="${projectAddClass}"><a  th:href="@{/project/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
@@ -85,14 +93,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Funding Source Org</span></a>
-                        <ul class="menu-content">
-                            <li th:class="${fundingSourceOrgAddClass}"><a  th:href="@{/funding-source-org/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>
-                            </li>
-                            <li th:class="${fundingSourceOrgListClass}"><a th:href="@{/funding-source-org/list}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 2">List</span></a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li class="has-sub"><a href="javascript:;"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Second Level Child">Training Category</span></a>
                         <ul class="menu-content">
                             <li th:class="${trainingCategoryAddClass}"><a th:href="@{/training-category/add}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Third Level 1">Add</span></a>

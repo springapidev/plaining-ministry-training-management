@@ -2,6 +2,7 @@ package bd.gov.plandiv.pdts.controller;
 
 import bd.gov.plandiv.pdts.entity.Training;
 import bd.gov.plandiv.pdts.service.ProjectService;
+import bd.gov.plandiv.pdts.service.TrainingCategoryService;
 import bd.gov.plandiv.pdts.service.TrainingService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,12 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TrainingController {
     private final TrainingService service;
     private final ProjectService projectService;
+    private final TrainingCategoryService categoryService;
 
     @GetMapping(value = "add")
     public String showAdd(Model model){
         model.addAttribute("trainingAddClass","active");
         model.addAttribute("training",new Training());
         model.addAttribute("projects",this.projectService.findAll());
+        model.addAttribute("trainingCategories",this.categoryService.findAll());
         return "trainings/add";
     }
     @PostMapping(value = "add")
@@ -47,6 +50,7 @@ public class TrainingController {
             }
         }
         model.addAttribute("projects",this.projectService.findAll());
+        model.addAttribute("trainingCategories",this.categoryService.findAll());
         return "trainings/add";
     }
 
@@ -75,6 +79,7 @@ public class TrainingController {
             }
         }
         model.addAttribute("projects",this.projectService.findAll());
+        model.addAttribute("trainingCategories",this.categoryService.findAll());
         return "trainings/edit";
     }
 

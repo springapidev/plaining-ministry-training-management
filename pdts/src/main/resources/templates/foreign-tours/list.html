@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{fragments/layout-list.html}">
 <!-- BEGIN : Head-->
@@ -50,7 +51,7 @@
                                <td>
                                    <a th:href="@{/foreign-tour/view/}+${foreignTour?.id}"><i class="ft-eye fa-2x"></i></a>
                                    <a th:href="@{/foreign-tour/update/}+${foreignTour?.id}"><i class="ft-edit fa-2x"></i></a>
-                                   <a th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
+                                   <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="|#myModal${i.index}|" class="trigger-btn" data-toggle="modal"><i
                                            class="fa fa-trash fa-2x"></i></a>
                                    <!-- Modal HTML -->
                                    <div th:id="|myModal${i.index}|" class="modal fade">

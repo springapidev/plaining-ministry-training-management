@@ -73,6 +73,14 @@
                                             </select>
                                         </fieldset>
 
+                                        <fieldset class="form-group">
+                                            <label for="project" >Category ( <span class="required">*</span> )</label>
+                                            <select class="form-control" required id="category" th:field="*{category}" >
+                                                <option value="0">Select One</option>
+                                                <option th:each="tc : ${trainingCategories}" th:value="${tc?.id}" th:text="${tc?.name}"></option>
+                                            </select>
+                                        </fieldset>
+
                                         <div class="form-group">
                                             <label for="comment">Descriptions</label>
                                             <textarea id="comment" rows="4" class="form-control round" th:field="*{descriptions}" placeholder="Enter descriptions"></textarea>

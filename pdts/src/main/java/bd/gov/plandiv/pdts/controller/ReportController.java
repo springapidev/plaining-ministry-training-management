@@ -83,4 +83,9 @@ public class ReportController {
         boolean status = reportService.exportReport(format);
         return "home";
     }
+    @GetMapping("training/{format}")
+    public String generateTrainingReport(@PathVariable String format) throws FileNotFoundException, JRException {
+        boolean status = reportService.exportTrainingReport(format);
+        return "home";
+    }
 }

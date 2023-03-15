@@ -18,4 +18,5 @@ public class TrainingCategory {
     private boolean status;
 
 
+
 }
