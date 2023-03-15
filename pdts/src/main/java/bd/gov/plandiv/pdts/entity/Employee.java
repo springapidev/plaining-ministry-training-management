@@ -42,7 +42,7 @@ public class Employee {
     @Lob
     private String biography;
 
-   @ManyToMany
+   @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
    private Set<Role> roles;
     @Column(nullable=false)
    private LocalDate dob;
@@ -59,7 +59,17 @@ public class Employee {
    private LocalDate restDate;
    private String lastDegree;
 
+    public Employee() {
+    }
 
+    public Employee(Employee employee){
+    this.email=employee.email;
+    this.password=employee.password;
+    this.status=employee.status;
+    this.firstName=employee.firstName;
+    this.lastName=employee.lastName;
+    this.roles=employee.roles;
+}
 
 }
 

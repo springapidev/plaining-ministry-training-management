@@ -2,15 +2,14 @@ package bd.gov.plandiv.pdts.controller;
 
 import bd.gov.plandiv.pdts.entity.Employee;
 import bd.gov.plandiv.pdts.entity.Training;
-import bd.gov.plandiv.pdts.service.EmployeeService;
-import bd.gov.plandiv.pdts.service.ForeignTourService;
-import bd.gov.plandiv.pdts.service.TrainingDetailsService;
-import bd.gov.plandiv.pdts.service.TrainingService;
+import bd.gov.plandiv.pdts.service.*;
 import lombok.AllArgsConstructor;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -22,6 +21,7 @@ public class ReportController {
     private final TrainingDetailsService trainingDetailsService;
     private final EmployeeService employeeService;
     private final ForeignTourService foreignTourService;
+    private final ReportService reportService;
 
     /**
 
@@ -75,5 +75,12 @@ public class ReportController {
         model.addAttribute("employeeForeignTourList", foreignTourService.findAllByEndDateBetween(startDate,endDate));
 
         return "reports/foreign-tour-list";
+    }
+
+
+    @GetMapping("{format}")
+    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+        boolean status = reportService.exportReport(format);
+        return "home";
     }
 }

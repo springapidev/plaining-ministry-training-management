@@ -6,6 +6,7 @@ import bd.gov.plandiv.pdts.repository.EmployeeRepository;
 import bd.gov.plandiv.pdts.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,12 +18,14 @@ import java.util.Optional;
 @Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public boolean save(Employee employee) {
        try{
            employee.setRestDate(employee.getJoiningDate().plusYears(3));
            employee.setRetirementDate(employee.getDob().plusYears(59).minusDays(1));
+           employee.setPassword(passwordEncoder.encode(employee.getPassword()));
            Employee roleSaved = this.repository.save(employee);
            if(!roleSaved.getId().equals(0)){
                log.info("Employee saved Successfully!");

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2.html}">
+<!-- BEGIN : Head-->
+
+<head>
+    <title>Users List</title>
+</head>
+<!-- END : Head-->
+
+<!-- BEGIN : Body-->
+
+<body>
+<div layout:fragment="custom-content">
+    <section class="users-list-wrapper">
+        <!-- Filter starts -->
+        <div class="users-list-filter px-2">
+            <form>
+                <div class="row border rounded py-2 mb-2 mx-n2">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <label for="users-list-verified">Verified</label>
+                        <fieldset class="form-group">
+                            <select id="users-list-verified" class="form-control">
+                                <option value="Any">Any</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </fieldset>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <label for="users-list-role">Role</label>
+                        <fieldset class="form-group">
+                            <select id="users-list-role" class="form-control">
+                                <option value="Any">Any</option>
+                                <option value="User">User</option>
+                                <option value="Staff">Staff</option>
+                            </select>
+                        </fieldset>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <label for="users-list-status">Status</label>
+                        <fieldset class="form-group">
+                            <select id="users-list-status" class="form-control">
+                                <option value="Any">Any</option>
+                                <option value="Active">Active</option>
+                                <option value="Close">Close</option>
+                                <option value="Banned">Banned</option>
+                            </select>
+                        </fieldset>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
+                        <button type="reset" class="btn btn-primary btn-block users-list-clear glow mb-0">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Filter ends -->
+
+        <!-- Table starts -->
+        <div class="users-list-table">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Users</h4>
+                        </div>
+                        <div class="card-content ">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped file-export text-center m-0">
+                                        <thead>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Type</th>
+                                            <th>Roles</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><img class="avatar" src="/static/profile-photo/dummy.jpg" width="35" height="35"></td>
+                                            <td>Samiun Islam</td>
+                                            <td>sami@gmail.com</td>
+                                            <td>GOLD</td>
+                                            <td>Campaign Manager, User</td>
+                                            <td>
+                                                <a href="#"> <i class="ft-eye"></i> </a>
+                                                <a href="#"> <i class="ft-edit"></i> </a>
+                                                <a href="#"> <i class="ft-delete"></i></a>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="avatar" src="/static/profile-photo/dummy.jpg" width="35" height="35"></td>
+                                            <td>Samiun Islam</td>
+                                            <td>sami@gmail.com</td>
+                                            <td>GOLD</td>
+                                            <td>Campaign Manager, User</td>
+                                            <td>
+                                                <a href="#"> <i class="ft-eye"></i> </a>
+                                                <a href="#"> <i class="ft-edit"></i> </a>
+                                                <a href="#"> <i class="ft-delete"></i></a>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="avatar" src="/static/profile-photo/dummy.jpg" width="35" height="35"></td>
+                                            <td>Samiun Islam</td>
+                                            <td>sami@gmail.com</td>
+                                            <td>GOLD</td>
+                                            <td>Campaign Manager, User</td>
+                                            <td>
+                                                <a href="#"> <i class="ft-eye"></i> </a>
+                                                <a href="#"> <i class="ft-edit"></i> </a>
+                                                <a href="#"> <i class="ft-delete"></i></a>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Table ends -->
+    </section>
+</div>
+<script>
+    $("#userDatatable").DataTable();
+</script>
+</body>
+
+
+</html>
